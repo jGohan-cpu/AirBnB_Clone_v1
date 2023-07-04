@@ -12,5 +12,9 @@ class State(BaseModel):
 
     name = ""
 
-    def __init__(self, *args):
-        pass
+    def __init__(self, name=None):
+        self.name = name
+
+    @property
+    def state(self):
+        return self.name
