@@ -3,7 +3,7 @@
 File Storage of class
 """
 import json
-BaseModel = model.base_model.BaseModel
+BaseModel = models.base_model.BaseModel
 """
 User = model.user.User
 State = models.state.State
