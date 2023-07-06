@@ -21,14 +21,15 @@ class BaseModel:
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 if key != '__class__':
                     setattr(self, key, value)
+
+        if "id" not in kwargs:
+            self.id = str(uuid.uuid4())
+
         else:
             self.id = str(uuid.uuid4())
             now = datetime.now()
             self.created_at = now
             self.updated_at = now
-
-        from models import storage
-        storage.new(self)
 
     def __str__(self):
         '''
@@ -45,6 +46,7 @@ class BaseModel:
         from models import storage
 
         self.updated_at = datetime.now()
+        storage.new(self)
         storage.save()
 
     def to_dict(self):

@@ -56,11 +56,14 @@ class FileStorage():
                 -Import Base class to manage circular import
                 -Convert dictionary to objects
             """
-        if os.path.exist(self.__file_path):
-            with open(self.__file_path, 'r') as file_r:
-                dict = json.load(file_r)
-
-        from models.base_model import BaseModel
-
-        for k, v in dict.items():
-            self.__objects[k] = BaseModel(**v)
+        try:
+            with open(self.__file_path, 'r') as file:
+                data = file.read()
+                if data:
+                    dict = json.loads(data)
+                    for key, value in dict.item():
+                        class_name = value["__class__"]
+                        obj = eval(class_name)(**value)
+                        self.__objects[key] = obj
+        except FileNotFoundError:
+            pass
