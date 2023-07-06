@@ -3,6 +3,7 @@
 File Storage of class
 """
 import json
+import os
 from models.base_model import BaseModel
 """
 User = model.user.User
@@ -28,9 +29,8 @@ class FileStorage():
                 -Create key as [class name].[id]
                 -Add obj to dictionary
                 """
-        if obj:
-            key = "{}.{}".format(obj.__class__.__name__, obj.id)
-            self.__objects[key] = obj
+        key = "{}.{}".format(obj.__class__.__name__, obj.id)
+        FileStorage.__objects[key] = obj
 
     def all(self):
         """ returns all objects """
@@ -61,5 +61,6 @@ class FileStorage():
                 dict = json.load(file_r)
 
         from models.base_model import BaseModel
+
         for k, v in dict.items():
             self.__objects[k] = BaseModel(**v)
