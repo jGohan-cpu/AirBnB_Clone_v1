@@ -3,7 +3,7 @@
     - Creates an instance of File Storage class
     - Load the object form the file
     """
-FileStorage = models.engine.file_storage.FileStorage
+from models.engine.file_storage import FileStorage
 
 storage = FileStorage()
 storage.reload()
