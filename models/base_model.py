@@ -40,10 +40,10 @@ class BaseModel:
         and time.
         - Saves instance to storage variable created at __init__
         """
-        from models import storage
-
         self.updated_at = datetime.now()
+
         models.storage.new(self)
+
         models.storage.save()
 
     def to_dict(self):
