@@ -1,4 +1,7 @@
 # Holberton AirBnB
+<p>
+<img source="views/Airbnb.gif">
+</p>
 ## Console
 * First phase of Holberton's project AirBnB Clone that collectively covers highlevel concepts and fundamentals. At the end of this project we'll deploy our server with a basic code that simulates and runs a copy of the biggest stay app, AirBnB. In this phase we create a command intrepreter that manages objects for later implementation and app updates.
 # Table of Contents
