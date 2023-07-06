@@ -21,12 +21,15 @@ class FileStorage():
     __objects: dictionary of instances
     """
     __file_path = "file.json"
-    __instances = {}
+    __objects = {}
 
     def new(self, obj):
-        """ adds object to objects """
+        """ adds object to storage
+                -Create key as [class name].[id]
+                -Add obj to dictionary
+                """
         if obj:
-            key = f"{obj.__class__.__name__}.{obj.id}"
+            key = "{}.{}".format(obj.__class__.__name__, obj.id)
             self.__objects[key] = obj
 
     def all(self):
@@ -38,8 +41,20 @@ class FileStorage():
         dict = {}
         for key, value in self.__objects.items():
             dict[key] = value.to_dict()
-        with open(self.__file_path, 'w') as file:
-            json.dump(dict, file)
+        with open(self.__file_path, 'w') as file_w:
+            json.dump(dict, file_w)
 
-    except FileNotFoundError:
-    pass
+    def reload(self):
+        """ deserialize json file to __objects
+                -If file exists open on read only
+                -Load json file to dictionary
+                -Import Base class to manage circular import
+                -Convert dictionary to objects
+            """
+        if os.path.exist(self.__file_path):
+            with open(self.__file_path, 'r') as file_r:
+                dict = json.load(file_r)
+
+        from models.base_model import BaseModel
+        for k, v in dict.items():
+            self.__objects[k] = BaseModel(**v)
