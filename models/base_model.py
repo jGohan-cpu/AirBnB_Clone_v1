@@ -7,6 +7,7 @@ other classes.
 
 import uuid
 from datetime import datetime
+from models import storage
 
 
 class BaseModel:
@@ -37,8 +38,10 @@ class BaseModel:
         """
         updates the 'updated_at' attribute with the current date
         and time.
+        - Saves instance to storage variable created at __init__
         """
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """
