@@ -7,7 +7,6 @@ other classes.
 
 import uuid
 from datetime import datetime
-import models
 
 
 class BaseModel:
@@ -28,6 +27,9 @@ class BaseModel:
             self.created_at = now
             self.updated_at = now
 
+        from models import storage
+        storage.new(self)
+
     def __str__(self):
         '''
         retuns object as string
@@ -40,11 +42,11 @@ class BaseModel:
         and time.
         - Saves instance to storage variable created at __init__
         """
+        from models import storage
+
         self.updated_at = datetime.now()
-
-        models.storage.new(self)
-
-        models.storage.save()
+        storage.new(self)
+        storage.save()
 
     def to_dict(self):
         """
