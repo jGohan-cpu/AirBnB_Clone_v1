@@ -51,14 +51,16 @@ class FileStorage():
 
     def reload(self):
         """ deserialize json file to __objects
-                -If file exists open on read only
+                -If file exists open on read only and read
                 -Load json file to dictionary
-                -Import Base class to manage circular import
+                -Eval class name
                 -Convert dictionary to objects
+                - Otherwise do nothing
             """
         try:
             with open(self.__file_path, 'r') as file:
                 data = file.read()
+
                 if data:
                     dict = json.loads(data)
                     for key, value in dict.item():
