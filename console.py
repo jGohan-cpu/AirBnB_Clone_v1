@@ -1,28 +1,32 @@
 #!/usr/bin/python3
 """ Contains the entry point of the command interpreter """
 import cmd
-from models import storage
-from models import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
     """ Command Class """
-    prompt = "(hbnb)"
+    prompt = "(hbnb) "
 
-    def __init__(self):
-        super(HBNBCommand, self).__init__()
+    def do_quit(self, args):
+        """Function to exit the program"""
+        return True
 
-    def quit(self, args):
-        """Function to exit program"""
-        pass
+    def do_EOF(self, args):
+        """Function to exit the program"""
+        return True
 
-    def EOF(self, args):
-        """Function to exit program"""
-        return self.quit(args)
-
-    def empty(self):
+    def emptyline(self):
         """If empty do nothing"""
         pass
 
-    if __name__ == "__main__":
-        HBNBCommand()
+    def help_quit(self):
+        """Help message for quit command"""
+        print("Quit command to exit the program")
+
+    def help_EOF(self):
+        """Help message for EOF command"""
+        print("Function to exit the program")
+
+
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
