@@ -27,6 +27,10 @@ class HBNBCommand(cmd.Cmd):
         """Help message for EOF command"""
         print("Function to exit the program")
 
+    def default(self, line):
+        """Default behavior for unknown commands"""
+        print("*** Unknown command: {}".format(line))
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
