@@ -71,24 +71,25 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-        try:
-            class_name = args[0]
-            instance_id = args[1]
-            key = class_name + '.' + instance_id
-            instance = storage.all().get(key)
-            if instance:
-                del storage.all()[key]
-                storage.save()
-            else:
-                print("** no instance found **")
-        except IndexError:
-            if len(args) < 2:
-                if args[0] not in ["BaseModel"]:
-                    print("** class doesn't exist **")
-                else:
-                    print("** instance id missing **")
-            else:
-                print("** no instance found **")
+
+        class_name = args[0]
+        if class_name not in ["BaseModel", "User", "Place", "Amenity", "Review", "State", "City"]:
+            print("** class doesn't exist **")
+            return
+
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+
+        instance_id = args[1]
+        key = f"{class_name}.{instance_id}"
+        instances = storage.all()
+
+        if key in instances:
+            del instances[key]
+            storage.save()
+        else:
+            print("** no instance found **")
 
     def do_all(self, arg):
         """Print all string representations of instances."""
