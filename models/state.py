@@ -1,20 +1,13 @@
 #!/usr/bin/python3
-""" State class that inherits from BaseModel"""
+"""
+Module containing the state
+"""
 
-BaseModel = models.base_model.BaseModel
+from models.base_model import BaseModel
 
 
 class State(BaseModel):
-    """State class
+    """ State class
     Attributes:
-        name (str): name of state
-    """
-
+        name (str): name of state"""
     name = ""
-
-    def __init__(self, name=None):
-        self.name = name
-
-    @property
-    def state(self):
-        return self.name
