@@ -1,53 +1,47 @@
 #!/usr/bin/python3
-"""
-File Storage of class
-"""
+"""File_storage, desrializes and serialiazes objects """
+
 import json
-import os
 from models.base_model import BaseModel
-"""
-User = model.user.User
-State = models.state.State
-City = models.city.City
-Place = models.place.Place
-Amenity = models.amenity.Amenity
-Review = models.review.Review
-"""
+from models.user import User
+from models.state import State
+from models.review import Review
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
 
 
-class FileStorage():
+class FileStorage:
     """Function class to serialize (json) file and deserialize file to instance
 
     __file_path: data storage path
     __objects: dictionary of instances
     """
+
     __file_path = "file.json"
     __objects = {}
 
-    def new(self, obj):
-        """ adds object to storage
-                -Create key as [class name].[id]
-                -Add obj to dictionary
-                """
-        key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        FileStorage.__objects[key] = obj
-
     def all(self):
-        """ returns all objects """
-        return self.__objects
-
-    def save(self):
         """ serialize dictionary to json file 
             - Convert obj to dictionary (format)
             - Open file in write
             - Write into file as json"""
+        return self.__objects
+
+    def new(self, obj):
+        """Sets in new object to objects"""
+        key = obj.__class__.__name__ + "." + obj.id
+        self.__objects[key] = obj
+
+    def save(self):
+        """Objects are serialized and saved in a JSON file"""
         dict = {}
 
         for key, value in self.__objects.items():
             dict[key] = value.to_dict()
 
-        with open(self.__file_path, 'w') as file_w:
-            json.dump(dict, file_w)
+        with open(self.__file_path, "w") as file:
+            json.dump(dict, file)
 
     def reload(self):
         """ deserialize json file to __objects
@@ -58,14 +52,31 @@ class FileStorage():
                 - Otherwise do nothing
             """
         try:
-            with open(self.__file_path, 'r') as file:
-                data = file.read()
+            with open(self.__file_path, "r") as file:
+                # Load the JSON data from the file
+                json_data = json.load(file)
+                # Clear the existing objects
+                self.__objects.clear()
 
-                if data:
-                    dict = json.loads(data)
-                    for key, value in dict.item():
-                        class_name = value["__class__"]
-                        obj = eval(class_name)(**value)
-                        self.__objects[key] = obj
-        except FileNotFoundError:
+                # Iterate over the key-value pairs in the JSON data
+                for key, value in json_data.items():
+                    # Get the class name from the '__class__' key
+                    class_name = value['__class__']
+                    # Create an object based on the class name
+                    if class_name == 'User':
+                        self.__objects[key] = User(**value)
+                    elif class_name == 'Place':
+                        self.__objects[key] = Place(**value)
+                    elif class_name == 'Amenity':
+                        self.__objects[key] = Amenity(**value)
+                    elif class_name == 'Review':
+                        self.__objects[key] = Review(**value)
+                    elif class_name == 'State':
+                        self.__objects[key] = State(**value)
+                    elif class_name == 'City':
+                        self.__objects[key] = City(**value)
+                    else:
+                        self.__objects[key] = BaseModel(**value)
+        except Exception:
+            # if the file is not found do nothing
             pass
