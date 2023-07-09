@@ -47,23 +47,25 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-        try:
-            class_name = args[0]
-            instance_id = args[1]
-            key = class_name + '.' + instance_id
-            instance = storage.all().get(key)
-            if instance:
-                print(instance)
-            else:
-                print("** no instance found **")
-        except IndexError:
-            if len(args) < 2:
-                if args[0] not in ["BaseModel"]:
-                    print("** class doesn't exist **")
-                else:
-                    print("** instance id missing **")
-            else:
-                print("** no instance found **")
+
+        class_name = args[0]
+        if class_name not in ["BaseModel", "User", "Place", "Amenity", "Review", "State", "City"]:
+            print("** class doesn't exist **")
+            return
+
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+
+        instance_id = args[1]
+        key = f"{class_name}.{instance_id}"
+        instances = storage.all()
+
+        if key in instances:
+            instance = instances[key]
+            print(instance)
+        else:
+            print("** no instance found **")
 
     def do_destroy(self, arg):
         """Delete an instance based on the class name and id."""
@@ -98,11 +100,11 @@ class HBNBCommand(cmd.Cmd):
             print([str(obj) for obj in objects.values()])
         else:
             args = arg.split()
-            if args[0] not in ["BaseModel"]:
+            class_name = args[0]
+            if class_name not in ["BaseModel", "User", "Place", "Amenity", "Review", "State", "City"]:
                 print("** class doesn't exist **")
                 return
-            print([str(obj) for obj in objects.values()
-                  if type(obj).__name__ == args[0]])
+        print([str(obj) for obj in objects.values() if isinstance(obj, globals()[class_name])])
 
     def do_update(self, arg):
         """Update an instance based on the class name and id."""
