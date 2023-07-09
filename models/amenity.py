@@ -1,7 +1,9 @@
 #!/usr/bin/python3
-""" Amenity class that inherits from BaseModel"""
+"""
+Module containing the Amenity
+"""
 
-BaseModel = models.base_model.BaseModel
+from models.base_model import BaseModel
 
 
 class Amenity(BaseModel):
@@ -10,6 +12,3 @@ class Amenity(BaseModel):
         name (str): name of amenity
     """
     name = ""
-
-    def __init__(self, **kwargs):
-        pass
