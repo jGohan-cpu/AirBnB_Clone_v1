@@ -19,37 +19,62 @@ ________________________________________________________________________________
 * Destroys object
 _____________________________________________________________________________________________
 # Enviroment
-python3
+python3 Ubuntu 20.04 pycodestyle
 
 # Testing:
 * Shell should work like this in interactive mode:
 ```
 $ ./console.py
-...
+(hbnb) help
 
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+
+(hbnb) 
+(hbnb) 
+(hbnb) quit
+$
 ```
 * But also in non-interactive mode:
 ```
-$ echo "/bin/ls" | ./console.py
-...
+$ ./console.py
+(hbnb) help
 
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+
+(hbnb) 
+(hbnb) 
+(hbnb) quit
+$
 ```
 # Example
-`
-./console.py
-...
+```
+$ ./console.py
+(hbnb) help
 
-`
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+
+(hbnb) 
+(hbnb) 
+(hbnb) quit
+$
+
+```
 # Learning Curve
 ### While creating this project we learned and practiced:
-1. Managing Python Classes and inheritance
+1. Managing Python Classes and Inheritance
 ...
 
 
 ## Questions?
 For any questions about this repo, please contact us at: </br>
 [nashalysf@gmail.com](mailto:nashalysf@gmail.com) </br>
-[joserivera@gmail.com](mailto:jjoseriveram01@gmail.com)
+[jjoseriveram01@gmail.com@gmail.com](mailto:jjoseriveram01@gmail.com)
 
 To view more of our works, please visit out GitHub: </br> 
 [nashalysf](https://github.com/nashalysf) </br>
