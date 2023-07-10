@@ -38,16 +38,24 @@ $
 ```
 * But also in non-interactive mode:
 ```
-$ ./console.py
-(hbnb) help
+$ echo "help" | ./console.py
+(hbnb)
 
 Documented commands (type help <topic>):
 ========================================
 EOF  help  quit
+(hbnb) 
+$
+$ cat test_help
+help
+$
+$ cat test_help | ./console.py
+(hbnb)
 
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
 (hbnb) 
-(hbnb) 
-(hbnb) quit
 $
 ```
 # Example
@@ -74,7 +82,7 @@ $
 ## Questions?
 For any questions about this repo, please contact us at: </br>
 [nashalysf@gmail.com](mailto:nashalysf@gmail.com) </br>
-[joserivera@gmail.com](mailto:jjoseriveram01@gmail.com)
+[jjoseriveram01@gmail.com@gmail.com](mailto:jjoseriveram01@gmail.com)
 
 To view more of our works, please visit out GitHub: </br> 
 [nashalysf](https://github.com/nashalysf) </br>
