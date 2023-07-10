@@ -74,7 +74,7 @@ $
 ## Questions?
 For any questions about this repo, please contact us at: </br>
 [nashalysf@gmail.com](mailto:nashalysf@gmail.com) </br>
-[joserivera@gmail.com](mailto:jose@gmail.com)
+[joserivera@gmail.com](mailto:jjoseriveram01@gmail.com)
 
 To view more of our works, please visit out GitHub: </br> 
 [nashalysf](https://github.com/nashalysf) </br>
