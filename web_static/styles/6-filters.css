@@ -1,0 +1,113 @@
+.filters {
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    position: relative;
+
+}
+
+.search-button {
+    position: absolute;
+    font-size: 18px;
+    background-color: #FF5A5F;
+    color: #FFFFFF;
+    height: 48px;
+    width: 20%;
+    border: none;
+    border-radius: 4px;
+    right: 30px;
+    top: .65rem;
+
+}
+
+.search-button:hover {
+    opacity: 90%;
+}
+
+.filters div {
+    display: inline-block;
+    height: 100%;
+    width: 25%;
+    position: relative;
+}
+
+.locations {
+    border-right: 1px solid #DDDDDD;
+}
+
+.amenities {
+    margin: -0.25rem;
+}
+
+
+.filter-title {
+    font-weight: 600;
+    padding: 0;
+    padding-top: 1rem;
+    padding-left: 20%;
+    margin: 0;
+}
+
+.filter-subtitle {
+    font-weight: 400;
+    font-size: 14px;
+    padding: 0;
+    padding-left: 20%;
+    margin: 0;
+}
+
+
+
+.popover {
+    display: none;
+    position: absolute;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    background-color: #FAFAFA;
+    border-radius: 4px;
+    list-style: none;
+    margin-top: 1.10rem;
+}
+
+.locations .popover {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    padding-left: 0;
+    right: 0;
+}
+
+.amenities .popover {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.locations:hover .popover,
+.amenities:hover .popover {
+    display: block;
+}
+
+.locations .popover li {
+    margin-bottom: 5px;
+
+}
+
+.locations .popover .cities {
+    list-style: none;
+}
+
+.locations .popover h2 {
+    font-size: 16px;
+    padding: 0;
+    padding-left: 20px;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+}
+
+.amenities .popover li {
+    text-align: left;
+    padding-bottom: 0.5rem;
+
+
+}

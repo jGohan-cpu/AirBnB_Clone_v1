@@ -1,8 +1,18 @@
 header {
-    color: white;
+    background-color: white;
     height: 70px;
     width: 100%;
     border-bottom: 1px solid #CCCCCC;
+    display: flex;
+    align-items: center;
 }
 
-.logo {}
+.logo {
+    background-image: url("../images/logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 200px;
+    height: 70px;
+    margin-left: 20px;
+}
